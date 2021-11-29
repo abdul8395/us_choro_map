@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Leaflet + TopoJSON</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      -webkit-box-sizing:border-box;
+      -moz-box-sizing:border-box;
+      box-sizing:border-box;
+    }
+    body,html,#map{
+      height:100%;
+    }   
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://d3js.org/topojson.v1.min.js" ></script>
+  <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+  <script>
+    // Copyright (c) 2013 Ryan Clark
+    // https://gist.github.com/rclark/5779673
+    L.TopoJSON = L.GeoJSON.extend({
+      addData: function(jsonData) {    
+        if (jsonData.type === "Topology") {
+          for (key in jsonData.objects) {
+            geojson = topojson.feature(jsonData, jsonData.objects[key]);
+            L.GeoJSON.prototype.addData.call(this, geojson);
+          }
+        }    
+        else {
+          L.GeoJSON.prototype.addData.call(this, jsonData);
+        }
+      }  
+    });
+  </script>
+  <script>
+    var map = L.map('map').setView([-7.29981,-36.93603], 8);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+					maxZoom: 18,
+					id: 'mapbox/light-v9',
+					tileSize: 512,
+					zoomOffset: -1
+				}).addTo(map);
+
+    var myStyle = {
+      fillColor : '#99ffcc',
+      fillOpacity: 0.5,
+      color:'#008000',
+      weight:2,
+      opacity:.5
+    };
+    
+    var topoLayer = new L.TopoJSON(null, {style: myStyle, onEachFeature: onEachFeature});
+    
+    $.getJSON('topo.json').done(addTopoData);
+
+    function onEachFeature(feature, layer) {
+      var popupContent = "<strong>Município: </strong>" + feature.properties.nome;
+
+      if (feature.properties && feature.properties.popupContent) {
+        popupContent += feature.properties.popupContent;
+      }
+
+      layer.bindPopup(popupContent);
+    }
+
+    function addTopoData(topoData){
+      topoLayer.addData(topoData);
+      topoLayer.addTo(map);
+    }
+
+  </script>
+</body>
+</html>

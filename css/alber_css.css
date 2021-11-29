@@ -1,0 +1,70 @@
+body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
+#map { width: 100%; height: 100%; }
+.info {
+      padding: 6px 8px;
+      font: 14px/16px Arial, Helvetica, sans-serif;
+      background: white;
+      background: rgba(255,255,255,0.8);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+.chk{
+  width: 15px; 
+   height: 15px; 
+}
+
+
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #4A4A4A;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+   
+  .sidebar a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+  
+  div.content {
+    margin-left: 200px;
+    height: 100%;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }

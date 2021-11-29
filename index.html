@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="css/alber_css.css">
+  
+	<link rel="stylesheet" href="lib//MarkerCluster.css" />
+	<link rel="stylesheet" href="lib/MarkerCluster.Default.css" />
+	<script src="lib/leaflet.markercluster-src.js"></script>
+  <style>
+    
+  </style>
+</head>
+
+<body>
+  <div class="sidebar">
+ 
+    <div class="" style="margin-top: 50px;">
+     <label for="county1" style="color: white; font-size: 12px;">
+             <input type="checkbox" class="chk" name="SFP_L2" value="Bike" onclick="addRemoveLayer('state_m_rates')" id="state_m_rates" checked>
+             State_Mortality_Rates</label>&nbsp<img src="imgs/mort1.png" alt="" width="35" height="35"><br><br><br>
+     <label for="county1" style="color: white; font-size: 12px;">
+             <input type="checkbox" class="chk" name="SFP_L2" value="Bike" onclick="addRemoveLayer('county_m_rates')" id="county_m_rates" checked>
+             County_Mortality_Rates</label>&nbsp<img src="imgs/mort1.png" alt="" width="35" height="35"><br><br><br>
+         <label for="MFP_L3" style="color: white; font-size: 12px;">
+             <input type="checkbox" class="chk" name="MFP_L3" value="Bike" onclick="addRemoveLayer('mhf')" id="mhf" checked>
+             Mental_Health_Facilities</label>&nbsp<img src="imgs/orange.png" alt="" width="30" height="30"><br><br><br>
+
+         <label for="demand_point" style="color: white; font-size: 11px;">
+             <input type="checkbox" class="chk" name="demand_point" value="Car" onclick="addRemoveLayer('saf')" id="saf" checked>
+             Substance_abuse_facilities </label>&nbsp<img src="imgs/pink.png" alt="" width="25" height="25"><br><br>
+     </div>
+  </div>
+  
+  <div class="content">
+    <div id="map"></div>
+  </div>
+  
+  <script src="js/mentalhealth.js"></script>
+  <script src="js/Substance_abuse_facilities.js"></script>
+  <script src="js/map.js"></script>
+</body>
