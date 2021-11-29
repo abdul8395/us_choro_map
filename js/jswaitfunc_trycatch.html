@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<script>
+ 
+
+  async function delayedGreeting() {
+   for(var i=0; i<10; i++){
+      test(i)
+     await sleep(2000);
+   } 
+  }
+
+  function test(p){
+    console.log(p);
+    try {
+      echo(dsd)
+    }
+    catch(err) {
+    console.log(err.message)
+    }
+    
+  }
+delayedGreeting();
+
+ function sleep(ms) {
+    return new Promise(
+      resolve => setTimeout(resolve, ms)
+    );
+  }
+</script>
+</body>
+</html>
